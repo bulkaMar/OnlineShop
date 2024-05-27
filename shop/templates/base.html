@@ -28,7 +28,9 @@
         <!-- Menu -->
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="{% url 'shop:home_page' %}" class="nav-link px-2 text-dark">Home</a></li>
+          {%  if request.user.email == 'manager@example.com' %}
           <li><a href="{% url 'dashboard:products' %}" class="nav-link px-2 text-dark">Manage</a></li>
+          {% endif %}
           <!-- categories dropdown -->
           <div class="dropdown text-end">
             <a href="#" class=" mt-2 me-1 ms-1 text-dark d-block link-dark text-decoration-none dropdown-toggle"id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
