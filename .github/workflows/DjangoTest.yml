@@ -25,20 +25,12 @@ jobs:
 
 
 
-    - name: Set up Django database
+    - name: Run tests
       run: |
         python3 -m venv venv
         source venv/bin/activate
         pip install -r requirements.txt
-        pip install django
-        pip3 install Django
-        python -m pip install Django
-        python manage.py runserver
-
-    - name: Run tests
-      run: |
-         python manage.py test accounts/tests
-         python manage.py test cart/tests
-         python manage.py test dashboard/tests
-         python manage.py test shop/tests
-
+        python manage.py test accounts/tests
+        python manage.py test cart/tests
+        python manage.py test dashboard/tests
+        python manage.py test shop/tests
