@@ -33,6 +33,7 @@ jobs:
         pip install django
         pip3 install Django
         python -m pip install Django
+        python manage.py runserver
 
     - name: Run tests
       run: |
