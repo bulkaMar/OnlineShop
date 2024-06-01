@@ -27,8 +27,8 @@ jobs:
 
     - name: Set up Django database
       run: |
-        python -m venv venv
-        venv\scripts\activate
+        python3 -m venv venv
+        source venv/bin/activate
         pip install -r requirements.txt
 
     - name: Run tests
