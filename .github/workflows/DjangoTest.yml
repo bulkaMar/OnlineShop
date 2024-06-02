@@ -1,13 +1,10 @@
 name: Django Tests
 
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch  
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
@@ -16,20 +13,28 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    - name: Use secret key
-      run: echo ${{ secrets.MY_SECRET_KEY }}
 
+    - name: Set environment variables
+      run: echo "Setting environment variables"
+      env:
+        SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
 
+    - name: Create virtual environment
+      run: python3 -m venv venv
 
-    - name: Run tests
-      run: |
-        python3 -m venv venv
-        source venv/bin/activate
-        pip install -r requirements.txt
-        python manage.py test 
+    - name: Activate virtual environment
+      run: source venv/bin/activate
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Django tests
+      run: python manage.py test
+      env:
+        SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
