@@ -79,6 +79,8 @@ jobs:
 
     - name: Merge to master
       run: |
+        git remote update
+        git fetch 
         git checkout master
         git merge main
         git push origin master
