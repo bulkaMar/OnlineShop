@@ -1,1 +1,1 @@
-web: gunicorn online_shop.wsgi --log-file -
+web: gunicorn online_shop.wsgi --preload
