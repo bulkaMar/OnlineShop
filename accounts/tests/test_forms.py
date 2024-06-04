@@ -11,5 +11,5 @@ class TestForms(TestCase):
     def test_user_login_form_no_data(self):
         form = UserLoginForm(data={})
         self.assertFalse(form.is_valid())
-        self.assertEquals(len(form.errors), 2)
+        self.assertEqual(len(form.errors), 2)
         
