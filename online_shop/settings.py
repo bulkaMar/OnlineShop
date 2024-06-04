@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-os.environ['DJANGO_SETTINGS_MODULE'] = 'online_shop.settings'
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -15,6 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
 ALLOWED_HOST = os.environ.get('ALLOWED_HOST', '*')
+DJANGO_SETTINGS_MODULE = os.environ.get('DJANGO_SETTINGS_MODULE')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
