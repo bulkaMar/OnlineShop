@@ -59,3 +59,28 @@ jobs:
 
     - name: Deploy to Heroku
       run: git push https://git.heroku.com/${{ secrets.HEROKU_APP_NAME }}.git HEAD:main
+
+
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Configure git
+      run: |
+        git config user.name "github-actions"
+        git config user.email "github-actions@github.com"
+
+    - name: Merge to master
+      run: |
+        git checkout master
+        git merge main
+        git push origin master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
