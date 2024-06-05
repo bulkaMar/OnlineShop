@@ -21,7 +21,7 @@ jobs:
         python-version: 3.x
 
     - name: Set environment variables
-      run: echo "Setting environment variables"
+      run: echo "Setting environment variables" 
       env:
         SECRET_KEY: ${{ secrets.MY_SECRET_KEY }}
 
